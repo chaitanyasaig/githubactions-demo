@@ -1,0 +1,33 @@
+name: Java Build and Jar Creation
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Print Greeting
+      run: echo "Hello New Java Project"
+
+    - name: Checkout source code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Build Java Project
+      run: |
+        chmod +x build.sh
+        ./build.sh
+
+    - name: Upload JAR artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: java-app-jar
+        path: app.jar
