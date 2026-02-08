@@ -5,6 +5,7 @@ on:
       - main
       - feature
       - develop
+      - pr*
   pull_request:
     types:
       - opened
