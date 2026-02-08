@@ -1,10 +1,17 @@
 name: Java Build and Jar Creation
 on:
   push:
-    branches: [ "main", "feature" ]
-  workflow_dispatch:
-
+    branches:
+      - main
+      - feature
+      - develop
   pull_request:
+    types:
+      - opened
+      - assigned
+      - edited
+      - reopened
+  workflow_dispatch:
 
 jobs:
   build:
